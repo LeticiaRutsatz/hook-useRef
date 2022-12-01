@@ -1,26 +1,29 @@
+
 import React from 'react';
-import logo from './logo.svg';
+import { ReactDOM } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import './App.css';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+  const inputRef2 = useRef<HTMLInputElement | null>(null);
+  const inputRef1 = useRef<HTMLInputElement | null>(null);
+  const inputRef3 = useRef<HTMLInputElement | null>(null);
 
+ return (
+  <div className='div'>
+      <input ref={inputRef1} placeholder='E-mail'onKeyUp={(ev) =>{
+        if (ev.key === ''){
+          inputRef2.current?.focus();
+        }
+      }}/>
+      <input ref={inputRef2} placeholder='Telefone'onKeyUp={(ev) =>{
+          inputRef3.current?.focus();
+      }}/>
+      <input ref={inputRef3} placeholder='Senha'/>
+      <button onClick={() => {inputRef2.current?.focus()}}>Cadastrar</button>
+  </div>
+ )
+  
+}
 export default App;
+
